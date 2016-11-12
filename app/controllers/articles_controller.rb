@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  #어떻게 set_article이 먼저 호출되도록 할 수 있는가?(only에 있는 함수들이 호출될 때 시점에서)
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
 
   def index
     @articles = Article.all
@@ -21,15 +23,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
       flash[:notice] = "Article was sucessfully updated"
       redirect_to article_path(@article)
@@ -40,16 +39,18 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     flash[:notice] = "Article is destoried"
     redirect_to articles_path
   end
 
   private
+    def set_article
+      @article = Article.find(params[:id])
+    end
+    end
     def article_params
       #article 클래스의 (article.rb)
       #"article"=>{"title"=>"aa", "description"=>"aasdf"} 이런 식으로 파라미터가 넘어옴
       params.require(:article).permit(:title, :description)
     end
-end
