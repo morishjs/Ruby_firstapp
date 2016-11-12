@@ -2,13 +2,19 @@
 <html>
 <head>
   <title>Untitled</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!--모든 페이지에 공통적으로 들어갈 코드를 작성한다. Navbar가 대표적인 예-->
+  <%= render 'layouts/navigation' %>
   <%= render 'layouts/messages' %>
-<%= yield %>
+  <div class="container">
+    <!--url에 따라서 들어갈 view(erb)-->
+    <%= yield %>
+  </div>
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>
