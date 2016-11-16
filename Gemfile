@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.16'
 # Use sqlite3 as the database for Active Record
-
+gem 'sqlite3'
 gem 'bcrypt', '~> 3.1.11'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
@@ -43,14 +43,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 group :development, :test do
-  gem 'sqlite3'
+
   # gem 'byebug'
   # gem 'web-console', '~> 2.0'
   # gem 'spring'
 end
 
 group :production do
-
   gem 'pg'
   gem 'rails_12factor'
 end
