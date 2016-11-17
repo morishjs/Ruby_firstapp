@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
     def article_params
       #article 클래스의 (article.rb)
       #"article"=>{"title"=>"aa", "description"=>"aasdf"} 이런 식으로 파라미터가 넘어옴
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, category_ids: [])
     end
 
     def require_same_user
