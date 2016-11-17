@@ -1,5 +1,9 @@
-<h2>Listing Articles</h2>
-<p><%= link_to "Create new article", new_article_url %></p>
+<div class="center">
+  <h2 align="center">Listing Articles</h2>
+  <p><%= link_to "Create new article", new_article_url %></p>
+</div>
+
+
 
 <% obj.each do |article| %>
     <div class="row">
@@ -18,6 +22,7 @@
             </div>
 
           </div>
+
           <% if article.categories.any? %>
             <p> Categories: <%= render article.categories %> </p>
           <% end %>
